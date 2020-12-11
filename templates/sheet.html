@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block main %}
+  <!--  <h1>Results sheet</h1>
+    <table>
+        {{ table|safe }}
+    </table>
+-->
+<h1> Results</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Political Party</th>
+            <th>Planning to vote?</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{ table|safe }}
+    </tbody>
+</table>
+
+ <!-- From staff solution for interactive tables view-source:https://survey.cs50.net/sheet -->
+ <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $('table')['DataTable']({'info':![],'ordering':!![],'paging':![],'searching':![]});
+    </script>
+
+
+{% endblock %}

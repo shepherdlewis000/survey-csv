@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+ <form name="myForm" action="/form" method="post" onsubmit="return validateForm()" >
+     <div class="form-group">
+         <label for="fname">First name</label>
+         <input type="text" class="form-control" name="fname" id="fname" placeholder="First name">
+     </div>
+     <div class="form-group">
+         <label for="lname">Last name</label>
+         <input type="text" class="form-control" name="lname" id="lname" placeholder="Last name"
+     </div>
+     <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+      <div class="form-check">
+        <large id="label" class="form-text">What political party do you consider yourself?</large>
+        <input class="form-check-input" type="radio" name="party" id="party1" value="None" checked>
+        <label class="form-check-label" for="party1">
+            None
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="party" id="party2" value="Republican">
+        <label class="form-check-label" for="party2">
+            Republican
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="party" id="party3" value="Democratic">
+        <label class="form-check-label" for="party3">
+            Democrat
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="party" id="party4" value="other">
+        <label class="form-check-label" for="party4">
+            other
+        </label>
+      </div><br>
+      <div class="form-group">
+        <label for="isVoting">Are you planning on voting in the 2020 Democratic primaries?</label>
+        <select class="form-control" name="isVoting" id="isVoting">
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+        </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+<!--
+  First name: <input type="text" name="fname"><br>
+  Last name: <input type="text" name="lname"><br>
+  E-mail: <input type="email" name="email"><br><br>
+  <input type="radio" name="party" value="none" checked="false"> No party affiliation<br>
+  <input type="radio" name="party" value="Democrat"> Democrat<br>
+  <input type="radio" name="party" value="Republican"> Republican<br>
+  <input type="radio" name="party" value="Green"> Green Party<br>
+  <input type="radio" name="party" value="other"> Another party<br><br>
+  <select name="isVoting">
+    <option selected disabled value="">Are you planning on voting in the 2020 Democratic primary?</option>
+    <option value="yes">I am planning on voting</option>
+    <option value="no">I am not planning on voting.</option><br>
+  </select>
+  <input type="submit" value="Submit">
+</form>
+-->
+    <script>
+
+        // As per https://www.w3schools.com/js/js_validation.asp
+        function validateForm() {
+            var fn = document.forms["myForm"]["fname"].value;
+            var ln = document.forms["myForm"]["lname"].value;
+            var em = document.forms["myForm"]["email"].value;
+            if (fn == "" || ln == "") {
+                alert("Please provide both first and last name");
+            return false;
+            }
+            if(em == "") {
+                alert("Please provide an email address");
+                return false;
+            }
+        }
+    </script>
+
+{% endblock %}
